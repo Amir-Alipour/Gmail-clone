@@ -1,0 +1,4 @@
+.header__left > img {
+    object-fit: contain;
+    height: 80px;
+}
