@@ -1,6 +1,10 @@
 import './Header.css';
+import { Avatar, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu'
-import { IconButton } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import AppsIcon from '@material-ui/icons/Apps';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
 function Header() {
     return (
@@ -9,15 +13,23 @@ function Header() {
                 <IconButton>
                     <MenuIcon />
                 </IconButton>
-                <img src="https://images.macrumors.com/t/tOeSavAWwmT_Nsa7e67NCK_J-FA=/400x0/filters:quality(90)/article-new/2020/10/newgmaillogo.0.jpg?lossy" alt="" />
+                <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r2.png" alt="Gmail Logo" />
             </div>
 
             <div className="header__middle">
-
+                <SearchIcon />
+                <input type="text" placeholder="Search mail" />
+                <ArrowDropDownIcon />
             </div>
 
             <div className="header__right">
-
+                <IconButton>
+                    <AppsIcon />
+                </IconButton>
+                <IconButton>
+                    <NotificationsIcon />
+                </IconButton>
+                <Avatar />
             </div>
         </div>
     )
