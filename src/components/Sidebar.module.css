@@ -4,7 +4,13 @@
     margin-bottom: 15px !important;  
     text-transform: capitalize !important;
     color: gray;
-    padding: 10px !important;
+    padding: 10px 20px !important;
     border-radius: 30px !important;
+    border: 0.5px solid rgba(0, 0, 0, 0.2) !important;
     box-shadow: 0 2px 5px -2px rgba(0, 0, 0, 0.75);
+}
+
+.sidebar__footer {
+    display: flex;
+    justify-content: center;
 }

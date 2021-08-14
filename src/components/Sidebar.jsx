@@ -1,7 +1,8 @@
 import styles from './Sidebar.module.css';
-import { Button } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add'
+import { Button, IconButton } from '@material-ui/core';
 import SidebarOption from './SidebarOption';
+
+import AddIcon from '@material-ui/icons/Add'
 import InboxIcon from '@material-ui/icons/Inbox';
 import StarIcon from '@material-ui/icons/Star';
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
@@ -9,6 +10,9 @@ import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import NearMeIcon from '@material-ui/icons/NearMe';
 import NoteIcon from '@material-ui/icons/Note';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import PersonIcon from '@material-ui/icons/Person';
+import DuoIcon from '@material-ui/icons/Duo';
+import PhoneIcon from '@material-ui/icons/Phone';
 
 function Sidebar() {
     return (
@@ -30,7 +34,17 @@ function Sidebar() {
 
             <div className={styles.sidebar__footer}>
                 <div className={styles.sidebar__footerIcons}>
+                    <IconButton>
+                        <PersonIcon />
+                    </IconButton>
 
+                    <IconButton>
+                        <DuoIcon />
+                    </IconButton>
+
+                    <IconButton>
+                        <PhoneIcon />
+                    </IconButton>
                 </div>
             </div>
         </div>
