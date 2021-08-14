@@ -17,10 +17,10 @@ function App() {
 
                     <Switch>
                         <Route path="/mail">
-                          <Mail />
+                            <Mail />
                         </Route>
                         <Route exact path="/">
-                          <EmailList />
+                            <EmailList />
                         </Route>
                     </Switch>
                 </div>

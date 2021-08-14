@@ -6,7 +6,7 @@
     color: gray;
     padding: 10px 20px !important;
     border-radius: 30px !important;
-    border: 0.5px solid rgba(0, 0, 0, 0.2) !important;
+    border: 0.5px solid rgba(0, 0, 0, 0.1) !important;
     box-shadow: 0 2px 5px -2px rgba(0, 0, 0, 0.75);
 }
 
