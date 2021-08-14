@@ -1,4 +1,5 @@
 import styles from "./EmailList.module.css";
+import EmailListSections from "./EmailListSections";
 import EmailListSettings from "./EmailListSettings";
 
 function EmailList() {
@@ -6,9 +7,9 @@ function EmailList() {
         <div className={styles.emailList}>
             <EmailListSettings />
 
-            <div className={styles.emailList__sections}>
+            <EmailListSections />
 
-            </div>
+            
         </div>
     );
 }

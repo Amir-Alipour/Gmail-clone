@@ -19,7 +19,7 @@
 .sidebarOption__active > h3 {
     background-color: #fcecec !important;
     color: #c04b37 !important;
-    font-weight: 800 !important;
+    font-weight: 500 !important;
 }
 
 .sidebarOption > .icon {

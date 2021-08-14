@@ -48,3 +48,7 @@
     padding-right: 15px;
     align-items: center;
 }
+
+.header__right > button {
+    margin-right: 5px;
+}
