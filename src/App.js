@@ -16,7 +16,7 @@ function App() {
                     <Sidebar />
 
                     <Switch>
-                        <Route path="/mail">
+                        <Route path="/mail/:id">
                             <Mail />
                         </Route>
                         <Route exact path="/">

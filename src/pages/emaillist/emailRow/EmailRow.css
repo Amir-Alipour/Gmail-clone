@@ -47,3 +47,9 @@
     font-weight: 400;
     color: gray;
 }
+
+.emailRow__details {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
