@@ -1,5 +1,11 @@
-import { IconButton } from "@material-ui/core";
-import { ExitToApp, Print, UnfoldMore } from "@material-ui/icons";
+import { Avatar, IconButton } from "@material-ui/core";
+import {
+    ExitToApp,
+    LabelImportant,
+    Print,
+    Reply,
+    UnfoldMore,
+} from "@material-ui/icons";
 import styles from "./Mail.module.css";
 import MailToolsRightIcons from "./MailToolsRightIcons";
 
@@ -24,6 +30,38 @@ function Mail() {
                         <ExitToApp />
                     </IconButton>
                 </div>
+            </div>
+
+            <div className={styles.mail_body}>
+                <div className={styles.mail__bodyHeader}>
+                    <h2>Subject</h2>
+                    <LabelImportant className={styles.mail__important} />
+                    <p>Title</p>
+                </div>
+
+                <div className={styles.mail__detail}>
+                    <div style={{display: "flex", alignItems: "center"}}>
+                        <Avatar className={styles.mail__avatar}/>
+                        <p>email@gmail.com</p>
+                    </div>
+
+                    <div style={{display: "flex", alignItems: "center"}}>
+                        <p>time 10 pm</p>
+                        <IconButton>
+                            <Reply />
+                        </IconButton>
+                    </div>
+                </div>
+
+                <div className={styles.mail__content}>
+                    <p>
+                        this is a message
+                    </p>
+                </div>
+            </div>
+
+            <div className={styles.mail__footer}>
+
             </div>
         </div>
     );
