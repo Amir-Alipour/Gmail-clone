@@ -61,7 +61,13 @@ function Mail() {
             </div>
 
             <div className={styles.mail__footer}>
+                <IconButton>
+                    Reply
+                </IconButton>
 
+                <IconButton>
+                    Forward
+                </IconButton>
             </div>
         </div>
     );
