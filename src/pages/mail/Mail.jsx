@@ -1,6 +1,7 @@
-import { Avatar, IconButton } from "@material-ui/core";
+import { Avatar, Button, IconButton } from "@material-ui/core";
 import {
     ExitToApp,
+    Forward,
     LabelImportant,
     Print,
     Reply,
@@ -61,7 +62,15 @@ function Mail() {
             </div>
 
             <div className={styles.mail__footer}>
-                
+                <Button className={styles.mail__footerBtn}>
+                    <Reply />
+                    <p>Reply</p>
+                </Button>
+
+                <Button className={styles.mail__footerBtn}>
+                    <Forward />
+                    <p>Forward</p>
+                </Button>
             </div>
         </div>
     );

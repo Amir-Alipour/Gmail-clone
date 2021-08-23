@@ -59,7 +59,7 @@
     box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24);
     min-height: 100vh;
     padding: 20px;
-    margin: 10px 10px 30px 55px;
+    margin: 10px 10px 10px 55px;
     overflow-wrap: break-word;
 }
 
@@ -67,3 +67,14 @@
     margin-left: 20px;
 }
 
+.mail__footer {
+    margin-bottom: 50px;
+    margin-left: 85px;
+}
+
+.mail__footerBtn {
+    padding: 10px !important;
+    border: 1px solid rgba(51, 51, 51, 0.438) !important;
+    margin-right: 10px !important;
+    text-transform: capitalize !important;
+}
