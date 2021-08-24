@@ -1,13 +1,16 @@
 import { createSlice, createEntityAdapter, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
 
-const fetchMails = createAsyncThunk("mailsList/fetchMails", async () => {
+export const fetchMails = createAsyncThunk("mailsList/fetchMails", async () => {
     return await axios.get("http://localhost:5000/mails").then(response => {
         return response.data;
     })
 })
 
-const mailsAdapter = createEntityAdapter();
+
+const mailsAdapter = createEntityAdapter({
+    sortComparer: (a, b) => b.stamp - a.stamp
+});
 
 export const {
     selectAll: selectAllMails,
@@ -29,8 +32,8 @@ const mailsSlice = createSlice({
             state.status = "loading";
         },
         [fetchMails.fulfilled]: (state, action) => {
+            mailsAdapter.upsertMany(state, action.payload);
             state.status = "success";
-            mailsAdapter.updateMany(state, action.payload);
         }
     }
 })

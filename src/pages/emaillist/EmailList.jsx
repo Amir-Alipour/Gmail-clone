@@ -1,9 +1,22 @@
+import { useLayoutEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMails, selectAllMailsIds } from "../../features/mailsListSlice";
 import styles from "./EmailList.module.css";
 import EmailListSections from "./EmailListSections";
 import EmailListSettings from "./EmailListSettings";
 import EmailRow from "./emailRow/EmailRow";
 
 function EmailList() {
+    const status = useSelector(state => state.mailsList.status);
+    const dispatch = useDispatch();
+    const mailsIds = useSelector(selectAllMailsIds);
+
+    useLayoutEffect(() => {
+        if(status === "idle"){
+            dispatch(fetchMails());
+        }
+    }, [dispatch, status])
+
     return (
         <div className={styles.emailList}>
             <EmailListSettings />
@@ -11,20 +24,17 @@ function EmailList() {
             <EmailListSections />
             
             <div className={styles.emailList__list}>
-                <EmailRow
-                    id="2121wwx"
-                    title="Twitch"
-                    subject="Hey Fellow streamer!!"
-                    description="This is a test"
-                    time="10 pm"
-                />
-                <EmailRow 
-                    id="ds54e4e"
-                    title="Twitch"
-                    subject="Hey Fellow streamer!!"
-                    description="This is a testssssssssssssssssssss"
-                    time="10 pm"
-                />
+                {
+                    mailsIds
+                    ? (
+                        mailsIds.map(id => (
+                            <EmailRow key={id} id={id} />
+                        ))
+                    )
+                    : (
+                        <div className="alert alert-warning">Loading ...!</div>
+                    )
+                }
             </div>
         </div>
     );

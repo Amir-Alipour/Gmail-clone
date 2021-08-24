@@ -6,7 +6,7 @@ module.exports = function () {
     };
 
     let i = 0;
-    for (i; i < 20; i++) {
+    for (i; i < 60; i++) {
         data.mails.push({
             id: faker.datatype.uuid(),
             title: faker.lorem.word(),
