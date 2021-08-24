@@ -15,6 +15,14 @@ import { fetchSingleMail, selectMailById } from "../../features/mailsListSlice";
 import styles from "./Mail.module.css";
 import MailToolsRightIcons from "./MailToolsRightIcons";
 
+function printPage(text){
+    let printWindow = window.open('_blank');
+    printWindow.document.open('text/plain');
+    printWindow.document.write(text);
+    printWindow.print();
+    printWindow.close();
+}
+
 function Mail() {
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -40,7 +48,7 @@ function Mail() {
                                 <UnfoldMore />
                             </IconButton>
 
-                            <IconButton>
+                            <IconButton onClick={() => printPage(mail.message)}>
                                 <Print />
                             </IconButton>
 

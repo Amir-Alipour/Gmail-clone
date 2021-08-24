@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { selectSendMailIsOpen } from "./features/mailSlice";
 
 function App() {
-    const sendMessageIsOpen = useSelector(selectSendMailIsOpen)
+    const sendMessageIsOpen = useSelector(selectSendMailIsOpen);
 
     return (
         <Router>
