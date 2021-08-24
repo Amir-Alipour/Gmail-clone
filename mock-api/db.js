@@ -10,8 +10,8 @@ module.exports = function () {
         data.mails.push({
             id: faker.datatype.uuid(),
             title: faker.lorem.word(),
-            subject: faker.lorem.sentence(),
-            description: faker.lorem.paragraph(),
+            subject: faker.lorem.words(),
+            description: faker.lorem.sentence(),
             message: faker.lorem.paragraphs(),
             stamp: faker.date.past().getTime(),
             user: {
