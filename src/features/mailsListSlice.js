@@ -7,6 +7,11 @@ export const fetchMails = createAsyncThunk("mailsList/fetchMails", async () => {
     })
 })
 
+export const fetchSingleMail = createAsyncThunk("mailsList/fetchSingleMail", async (id) => {
+    return await axios.get(`http://localhost:5000/mails/${id}`).then(response => {
+        return response.data;
+    })
+})
 
 const mailsAdapter = createEntityAdapter({
     sortComparer: (a, b) => b.stamp - a.stamp
@@ -34,6 +39,9 @@ const mailsSlice = createSlice({
         [fetchMails.fulfilled]: (state, action) => {
             mailsAdapter.upsertMany(state, action.payload);
             state.status = "success";
+        },
+        [fetchSingleMail.fulfilled]: (state, action) => {
+            mailsAdapter.upsertOne(state, action.payload);
         }
     }
 })

@@ -7,72 +7,105 @@ import {
     Reply,
     UnfoldMore,
 } from "@material-ui/icons";
+import moment from "moment";
+import { useLayoutEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { fetchSingleMail, selectMailById } from "../../features/mailsListSlice";
 import styles from "./Mail.module.css";
 import MailToolsRightIcons from "./MailToolsRightIcons";
 
 function Mail() {
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    const mail = useSelector((state) => selectMailById(state, id));
+
+    useLayoutEffect(() => {
+        if (!mail) {
+            dispatch(fetchSingleMail(id));
+        }
+    }, [dispatch, mail, id]);
+
     return (
-        <div className={styles.mail}>
-            <div className={styles.mail__tools}>
-                <div className={styles.mail__toolsRight}>
-                    <MailToolsRightIcons />
-                </div>
+        <>
+            {mail && (
+                <div className={styles.mail}>
+                    <div className={styles.mail__tools}>
+                        <div className={styles.mail__toolsRight}>
+                            <MailToolsRightIcons />
+                        </div>
 
-                <div className={styles.mail__toolsLeft}>
-                    <IconButton>
-                        <UnfoldMore />
-                    </IconButton>
+                        <div className={styles.mail__toolsLeft}>
+                            <IconButton>
+                                <UnfoldMore />
+                            </IconButton>
 
-                    <IconButton>
-                        <Print />
-                    </IconButton>
+                            <IconButton>
+                                <Print />
+                            </IconButton>
 
-                    <IconButton>
-                        <ExitToApp />
-                    </IconButton>
-                </div>
-            </div>
-
-            <div className={styles.mail_body}>
-                <div className={styles.mail__bodyHeader}>
-                    <h2>Subject</h2>
-                    <LabelImportant className={styles.mail__important} />
-                    <p>Title</p>
-                </div>
-
-                <div className={styles.mail__detail}>
-                    <div style={{display: "flex", alignItems: "center"}}>
-                        <Avatar className={styles.mail__avatar}/>
-                        <p>email@gmail.com</p>
+                            <IconButton>
+                                <ExitToApp />
+                            </IconButton>
+                        </div>
                     </div>
 
-                    <div style={{display: "flex", alignItems: "center"}}>
-                        <p>time 10 pm</p>
-                        <IconButton>
+                    <div className={styles.mail_body}>
+                        <div className={styles.mail__bodyHeader}>
+                            <h2>{mail.subject}</h2>
+                            <LabelImportant
+                                className={styles.mail__important}
+                            />
+                            <p>{mail.title}</p>
+                        </div>
+
+                        <div className={styles.mail__detail}>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <Avatar
+                                    className={styles.mail__avatar}
+                                    src={mail.user.profile}
+                                    alt={`${mail.user.name} Profile`}
+                                />
+                                <p>{mail.user.email}</p>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <p>{moment(mail.stamp).fromNow()}</p>
+                                <IconButton>
+                                    <Reply />
+                                </IconButton>
+                            </div>
+                        </div>
+
+                        <div className={styles.mail__content}>
+                            <p>{mail.message}</p>
+                        </div>
+                    </div>
+
+                    <div className={styles.mail__footer}>
+                        <Button className={styles.mail__footerBtn}>
                             <Reply />
-                        </IconButton>
+                            <p>Reply</p>
+                        </Button>
+
+                        <Button className={styles.mail__footerBtn}>
+                            <Forward />
+                            <p>Forward</p>
+                        </Button>
                     </div>
                 </div>
-
-                <div className={styles.mail__content}>
-                    <p>
-                        this is a message
-                    </p>
-                </div>
-            </div>
-
-            <div className={styles.mail__footer}>
-                <Button className={styles.mail__footerBtn}>
-                    <Reply />
-                    <p>Reply</p>
-                </Button>
-
-                <Button className={styles.mail__footerBtn}>
-                    <Forward />
-                    <p>Forward</p>
-                </Button>
-            </div>
-        </div>
+            )}
+        </>
     );
 }
 
